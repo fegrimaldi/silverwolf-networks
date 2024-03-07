@@ -5,8 +5,8 @@ import sys
 
 class GetNtpState(action.BaseAction):
     def run(self):
-        self._host = sys.argv[1]
-        self.conn_info["host"] = self._host
+        # self.host = sys.argv[1]
+        self.conn_info["host"] = sys.argv[1]
 
         self.device = Device(conn_info=self.conn_info)
 
