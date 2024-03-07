@@ -1,12 +1,10 @@
 from lib import action
 from lib.device import Device
-import sys
 
 
 class GetNtpState(action.BaseAction):
-    def run(self):
-        # self.host = sys.argv[1]
-        self.conn_info["host"] = sys.argv[1]
+    def run(self, **parameters):
+        self.conn_info["host"] = parameters["host"]
 
         self.device = Device(conn_info=self.conn_info)
 
