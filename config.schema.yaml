@@ -1,0 +1,10 @@
+---
+username:
+  description: "Device username."
+  type: "string"
+  required: true
+password:
+  description: "User password."
+  type: "string"
+  secret: true
+  required: true
