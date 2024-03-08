@@ -1,0 +1,12 @@
+---
+name: "get_bgp_state"
+runner_type: "python-script"
+description: "Gets the state of NTP on a Cisco NXOS device."
+enabled: true
+entry_point: "get_bgp_state.py"
+parameters:
+  host:
+    type: string
+    description: "Cisco NXOS device ip address or hostname."
+    required: true
+    position: 1

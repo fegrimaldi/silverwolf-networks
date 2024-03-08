@@ -4,7 +4,7 @@ username:
   type: "string"
   required: true
 password:
-  description: "User password."
+  description: "Device user password."
   type: "string"
   secret: true
   required: true
