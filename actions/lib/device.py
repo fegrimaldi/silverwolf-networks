@@ -46,5 +46,5 @@ class Device:
             if y[0][1] != "Established":
                 status = False
             bgp_state.append({"neighbor": y[0][0], "state": y[0][1]})
-        status = {"device": "192.168.10.101", "ok": status, "state": bgp_state}
+        status = {"device": self.host, "ok": status, "state": bgp_state}
         return status
