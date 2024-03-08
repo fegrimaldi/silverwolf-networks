@@ -1,7 +1,7 @@
 ---
 name: silverwolf
 description: SilverWolf Networks StackStorm/Gluware integration proof-of-concept.
-version: 0.9.4
+version: 0.9.5
 author: Fabricio E. Grimaldi
 email: 34732205+fegrimaldi@users.noreply.github.com
 python_versions:
