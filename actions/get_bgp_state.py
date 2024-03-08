@@ -9,4 +9,4 @@ class GetBgpState(action.BaseAction):
         self.device = Device(conn_info=self.conn_info)
         output = str(self.device.get_bgp_state())
         self.device.session.disconnect()
-        return json.dumps(output)
+        return output
