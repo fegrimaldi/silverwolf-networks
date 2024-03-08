@@ -1,5 +1,6 @@
 from lib import action
 from lib.device import Device
+import json
 
 
 class GetBgpState(action.BaseAction):
@@ -8,5 +9,4 @@ class GetBgpState(action.BaseAction):
         self.device = Device(conn_info=self.conn_info)
         output = str(self.device.get_bgp_state())
         self.device.session.disconnect()
-
-        return output
+        return json.dumps(output)
