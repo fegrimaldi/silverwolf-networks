@@ -31,7 +31,7 @@ class Device:
             status["ntp_peer"] = x.group(0)
         else:
             status["OK"] = False
-        return json.dumps(status)
+        return status
 
     def get_bgp_state(self):
 
@@ -47,4 +47,4 @@ class Device:
                 status = False
             bgp_state.append({"neighbor": y[0][0], "state": y[0][1]})
         status = {"device": "192.168.10.101", "OK": status, "state": bgp_state}
-        return json.dumps(status)
+        return status
