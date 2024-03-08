@@ -25,12 +25,12 @@ class Device:
         results = self.session.send_command("show ntp peer-status")
         pattern = "([\*]192\.168\.10\.1[01])"
         x = re.search(pattern, results)
-        status = {"device": self.host, "OK": None}
+        status = {"device": self.host, "ok": None}
         if x:
-            status["OK"] = True
+            status["ok"] = True
             status["ntp_peer"] = x.group(0)
         else:
-            status["OK"] = False
+            status["ok"] = False
         return status
 
     def get_bgp_state(self):
@@ -46,5 +46,5 @@ class Device:
             if y[0][1] != "Established":
                 status = False
             bgp_state.append({"neighbor": y[0][0], "state": y[0][1]})
-        status = {"device": "192.168.10.101", "OK": status, "state": bgp_state}
+        status = {"device": "192.168.10.101", "ok": status, "state": bgp_state}
         return status
