@@ -1,0 +1,28 @@
+---
+pack: silverwolf
+ref: silverwolf.nagios_trigger
+name: nagios_trigger
+uid: rule:silverwolf:nagios_trigger
+tags: []
+type:
+  ref: standard
+  parameters: {}
+enabled: true
+trigger:
+  type: nagios.service_state_change
+  ref: nagios.service_state_change
+  description: Trigger type for nagios service state change event.
+  parameters: {}
+metadata_file: ''
+context:
+  user: st2admin
+criteria:
+  trigger.state:
+    pattern: "^CRITICAL|DOWN$"
+    type: regex
+  trigger.state_type:
+    pattern: HARD
+    type: eq
+action:
+  ref: silverwolf.get_bgp_state
+  description: Ensure BGP is up when an interface goes down.
