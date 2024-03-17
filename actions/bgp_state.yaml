@@ -1,7 +1,7 @@
 ---
 name: "bgp_state"
 runner_type: "python-script"
-description: "Gets the state of NTP on a Cisco NXOS device."
+description: "Gets the state of BGP on a Cisco NXOS device."
 enabled: true
 entry_point: "bgp_state.py"
 parameters:

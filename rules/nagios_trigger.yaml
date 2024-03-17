@@ -24,7 +24,7 @@ criteria:
     pattern: HARD
     type: eq
 action:
-  ref: silverwolf.ospf_state
-  description: Check OSPF when an interface goes down.
+  ref: silverwolf.get_state
+  description: Checks NTP, OSPF, and BGP when a monitored interface goes down.
   parameters:
     host: "{{trigger.host}}"
