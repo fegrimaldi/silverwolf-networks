@@ -1,6 +1,5 @@
 from lib import action
 from lib.device import Device
-import json
 
 
 class GetBgpState(action.BaseAction):

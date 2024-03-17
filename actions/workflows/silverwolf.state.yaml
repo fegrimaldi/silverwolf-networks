@@ -12,7 +12,8 @@ vars:
 
 output:
   - ntp_state: <% ctx().ntp_state %>
-  - ospf_state: <% ctx().lunar_observation %>
+  - ospf_state: <% ctx().ospf_state %>
+  - bgp_state: <% ctx().bgp_state %>
 
 tasks:
   ntp:
@@ -26,7 +27,7 @@ tasks:
       - when: <% succeeded() %>
         publish: ospf_state=<% result().result %>
   bgp:
-    action: silverwolf.get_bgp_state host=<% ctx().host %>
+    action: silverwolf.bgp_state host=<% ctx().host %>
     next:
       - when: <% succeeded() %>
         publish: bgp_state=<% result().result %>        
