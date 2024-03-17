@@ -55,20 +55,11 @@ class Device:
         pattern = "Total number of neighbors: (\d)"
         x = re.search(pattern, results)
         status = {"device": self.host, "ok": None}
-        if x:
+        if x.groups(0) == 2:
             status["ok"] = True
             status["num_neighbors"] = x.group(0)
 
         else:
             status["ok"] = False
-            status["num_neighbors"] = None
-
-        results_y = self.session.send_command("show ip ospf neighbors")
-        pattern_y = "(^\s10\.128\.0\.[1234])"
-        y = re.search(pattern_y, results_y)
-        if y:
-            try:
-                status["ospf_neighbors"] = [y.group(0), y.group(1)]
-            except Exception:
-                status["ospf_neighbors"] = [y.group(0)]
+            status["num_neighbors"] = x.group(0)
         return status
