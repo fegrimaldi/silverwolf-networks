@@ -24,5 +24,7 @@ criteria:
     pattern: HARD
     type: eq
 action:
-  ref: silverwolf.get_bgp_state host=trigger.host
+  ref: silverwolf.get_bgp_state
   description: Ensure BGP is up when an interface goes down.
+  parameters:
+    host: "{{trigger.host}}"
