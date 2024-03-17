@@ -1,9 +1,9 @@
 ---
-name: "get_ospf_state"
+name: "ospf_state"
 runner_type: "python-script"
 description: "Gets the state of ospf on a Cisco NXOS device."
 enabled: true
-entry_point: "get_ospf_state.py"
+entry_point: "ospf_state.py"
 parameters:
   host:
     type: string

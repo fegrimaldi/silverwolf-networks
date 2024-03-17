@@ -24,7 +24,7 @@ criteria:
     pattern: HARD
     type: eq
 action:
-  ref: silverwolf.get_ospf_state
+  ref: silverwolf.ospf_state
   description: Check OSPF when an interface goes down.
   parameters:
     host: "{{trigger.host}}"

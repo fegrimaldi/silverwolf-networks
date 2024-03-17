@@ -1,0 +1,32 @@
+version: 1.0
+
+description: Assesses the state of ntp, ospf, and bgp on a Cisco NXOS device.
+
+input:
+  - host
+
+vars:
+  - ntp_state: null
+  - ospf_state: null
+  - bgp_state: null
+
+output:
+  - ntp_state: <% ctx().ntp_state %>
+  - ospf_state: <% ctx().lunar_observation %>
+
+tasks:
+  ntp:
+    action: silverwolf.get_ntp_state host=<% ctx().host %>
+    next:
+      - when: <% succeeded() %>
+        publish: ntp_state=<% result().result %>
+  ospf:
+    action: silverwolf.ospf_state host=<% ctx().host %>
+    next:
+      - when: <% succeeded() %>
+        publish: ospf_state=<% result().result %>
+  bgp:
+    action: silverwolf.get_bgp_state host=<% ctx().host %>
+    next:
+      - when: <% succeeded() %>
+        publish: bgp_state=<% result().result %>        
