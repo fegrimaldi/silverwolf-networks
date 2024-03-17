@@ -1,6 +1,6 @@
 from lib import action
 from lib.device import Device
-import json
+
 
 
 class GetOspfState(action.BaseAction):
