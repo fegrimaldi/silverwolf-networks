@@ -1,6 +1,6 @@
 version: 1.0
 
-description: Assesses the state of ntp, ospf, and bgp on a Cisco NXOS device.
+description: Assesses the state of NTP, OSPF, and BGP on a Cisco NXOS device.
 
 input:
   - host
