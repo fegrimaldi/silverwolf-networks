@@ -20,7 +20,7 @@ class Device:
             password=self.password,
         )
 
-    def get_ntp_state(self):
+    def ntp_state(self):
 
         results = self.session.send_command("show ntp peer-status")
         pattern = "([\*]192\.168\.10\.1[01])"
@@ -33,7 +33,7 @@ class Device:
             status["ok"] = False
         return status
 
-    def get_bgp_state(self):
+    def bgp_state(self):
 
         results = self.session.send_command("show ip bgp neighbors | in BGP")
         pattern = "BGP neighbor is\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).*BGP state\s*=\s*(\w+)"
@@ -49,7 +49,7 @@ class Device:
         status = {"device": self.host, "ok": status, "state": bgp_state}
         return status
 
-    def get_ospf_state(self):
+    def ospf_state(self):
 
         results = self.session.send_command("show ip ospf neighbors")
         pattern = "Total number of neighbors: (\d)"
