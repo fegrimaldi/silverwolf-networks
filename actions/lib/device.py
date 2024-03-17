@@ -48,3 +48,26 @@ class Device:
             bgp_state.append({"neighbor": y[0][0], "state": y[0][1]})
         status = {"device": self.host, "ok": status, "state": bgp_state}
         return status
+
+    def get_ospf_state(self):
+
+        results = self.session.send_command("show ip ospf neighbors")
+        pattern = "Total number of neighbors: (\d)"
+        x = re.search(pattern, results)
+        status = {"device": self.host, "ok": None}
+        if x:
+            status["ok"] = True
+            status["num_neighbors"] = x.group(0)
+
+        else:
+            status["ok"] = False
+            status["num_neighbors"] = None
+
+        pattern = "(^\s10\.128\.0\.[1234])"
+        y = re.search(pattern, results)
+        if y:
+            try:
+                status["ospf_neighbors"] = [y.group(0), y.group(1)]
+            except Exception:
+                status["ospf_neighbors"] = [y.group(0)]
+        return status
