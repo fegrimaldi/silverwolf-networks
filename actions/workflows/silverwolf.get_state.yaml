@@ -27,7 +27,7 @@ tasks:
       - when: <% succeeded() %>
         publish: ospf_state=<% result().result %>
   bgp:
-    action: silverwolf.bgp_state host=<% ctx().host %>
+    action: silverwolf.get_state host=<% ctx().host %>
     next:
       - when: <% succeeded() %>
         publish: bgp_state=<% result().result %>        
