@@ -49,20 +49,32 @@ class Device:
         return status
 
     def ospf_state(self):
-
         results = self.session.send_command("show ip ospf neighbors")
-        pattern = "Total number of neighbors: (\d)"
-        x = re.search(pattern, results)
+        pattern = r"Total number of neighbors: (?P<neighbor_count>\d)"
         status = {"device": self.host, "ok": None}
-        try:
-            if x.groups(0) == 2:
+        # Search for the pattern in the input string
+        match = re.search(pattern, results)
+
+        # Check if a match is found
+        if match:
+            # Extract the neighbor count from the match
+            neighbor_count = int(match.group("neighbor_count"))
+            if neighbor_count == 2:
                 status["ok"] = True
-                status["num_neighbors"] = x.group(0)
             else:
                 status["ok"] = False
-                status["num_neighbors"] = x.group(0)
-        except Exception:
-            status["ok"] = False
-            status["num_neighbors"] = 0
+            status["neighbor_count"] = neighbor_count
 
+        # Regular expression pattern to capture neighbor IDs
+        pattern_neighbor = r"^\s*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
+
+        # Find all occurrences of neighbor IDs in the input string
+
+        neighbor_ids = []
+        for line in results.splitlines():
+            match = re.search(pattern_neighbor, line)
+            if match:
+                neighbor_ids.append(match.group(1))
+
+        status["neighbors"] = neighbor_ids
         return status
