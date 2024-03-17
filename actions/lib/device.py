@@ -3,7 +3,6 @@
 
 from netmiko import ConnectHandler
 import re
-import json
 
 
 class Device:
