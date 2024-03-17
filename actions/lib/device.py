@@ -55,11 +55,15 @@ class Device:
         pattern = "Total number of neighbors: (\d)"
         x = re.search(pattern, results)
         status = {"device": self.host, "ok": None}
-        if x.groups(0) == 2:
-            status["ok"] = True
-            status["num_neighbors"] = x.group(0)
-
-        else:
+        try:
+            if x.groups(0) == 2:
+                status["ok"] = True
+                status["num_neighbors"] = x.group(0)
+            else:
+                status["ok"] = False
+                status["num_neighbors"] = x.group(0)
+        except Exception:
             status["ok"] = False
-            status["num_neighbors"] = x.group(0)
+            status["num_neighbors"] = 0
+
         return status
