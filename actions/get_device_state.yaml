@@ -1,0 +1,12 @@
+---
+name: get_device_state
+pack: silverwolf
+description: Gets NTP, OSPF, and BGP state of a Cisco NXOS device.
+runner_type: orquesta
+entry_point: workflows/get_device_state.yaml
+enabled: true
+parameters:
+  host:
+    required: true
+    type: string
+    default: ""
