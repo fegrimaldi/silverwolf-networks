@@ -1,9 +1,9 @@
 ---
-name: "get_ntp_state"
+name: "ntp_state"
 runner_type: "python-script"
 description: "Gets the state of NTP on a Cisco NXOS device."
 enabled: true
-entry_point: "get_ntp_state.py"
+entry_point: "ntp_state.py"
 parameters:
   host:
     type: string

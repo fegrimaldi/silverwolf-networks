@@ -1,7 +1,5 @@
 from lib import action
 from lib.device import Device
-import json
-
 
 class GetNtpState(action.BaseAction):
     def run(self, **parameters):

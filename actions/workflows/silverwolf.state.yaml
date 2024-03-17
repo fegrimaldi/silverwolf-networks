@@ -16,7 +16,7 @@ output:
 
 tasks:
   ntp:
-    action: silverwolf.get_ntp_state host=<% ctx().host %>
+    action: silverwolf.ntp_state host=<% ctx().host %>
     next:
       - when: <% succeeded() %>
         publish: ntp_state=<% result().result %>
