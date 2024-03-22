@@ -1,0 +1,29 @@
+version: 1.0
+
+description: Runs a Gluware workflow.
+
+input:
+  - device_name
+
+vars:
+  - device_id: null
+  - result: null
+
+
+output:
+  - device_id: <% ctx().device_id %>
+  - result: <% ctx().result %>
+
+
+tasks:
+  get:
+    action: silverwolf.get_glu_device_id device_name=<% ctx().device_name %>
+    next:
+      - when: <% succeeded() %>
+        publish: device_id=<% result().result %>
+  run:
+    action: silverwolf.run_glu_workflow device_id=<% ctx().device_id %>
+    next:
+      - when: <% succeeded() %>
+        publish: result=<% result().result %>
+     

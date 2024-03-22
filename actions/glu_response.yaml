@@ -1,0 +1,12 @@
+---
+name: glu_response
+pack: silverwolf
+description: Runs a [g]luware workglow.
+runner_type: orquesta
+entry_point: workflows/glu_response.yaml
+enabled: true
+parameters:
+  device_name:
+    required: true
+    type: string
+    default: ""
