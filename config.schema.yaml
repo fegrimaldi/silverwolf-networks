@@ -21,4 +21,9 @@ glu_base_url:
   description: "Gluware Base url (https://glups.gluware.lab)"
   type: "string"
   secret: false
+  required: true
+glu_org_id:
+  description: "Gluware Org ID"
+  type: "string"
+  secret: false
   required: true  

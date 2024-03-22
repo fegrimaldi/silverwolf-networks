@@ -1,22 +1,24 @@
 from lib import action
 from lib.webmethod import WebMethod
 
+workflow_id = "af06b8d9-4110-4f45-8149-a53950764913"  #! NTP WF
 
-class GetGluDeviceId(action.BaseAction):
+
+class RunGluWorklflow(action.BaseAction):
     def run(self, **parameters):
         self.web_method = WebMethod(verify=False)
         response_raw = self.web_method.call(
-            "GET",
-            f"{self.glu_base_url}/api/devices",
+            "POST",
+            f"{self.glu_base_url}/api/{workflow_id}/run",
             {
                 "orgId": self.org_id,
-                "name": parameters["device_name"],
+                "deviceIds": [parameters["device_id"]],
+                "inputParameters": {},
             },
             headers=None,
             auth=self.glu_auth,
         )
         if response_raw is not None:
-            response = response_raw.json()
-            return response[0]["id"]
+            return response_raw.status_code
         else:
             return {"status": "unhandled exception"}
