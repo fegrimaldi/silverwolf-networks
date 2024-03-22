@@ -13,7 +13,7 @@ class WebMethod:
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
         self.verify = verify
 
-    def call(self, method, url, payload=None, headers=None, auth=None):
+    def call(self, method, url, params, headers=None, payload=None, auth=None):
         """
         Calls the specified HTTP method (GET, POST, PATCH, etc.) using the requests library.
 
@@ -41,7 +41,7 @@ class WebMethod:
         try:
             if method == "GET":
                 response = requests.get(
-                    url, headers=headers, auth=auth, verify=self.verify
+                    url, params=params, headers=headers, auth=auth, verify=self.verify
                 )
             elif method == "POST":
                 response = requests.post(
