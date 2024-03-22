@@ -1,0 +1,12 @@
+---
+name: get_glu_device_id
+pack: silverwolf
+description: Gets the Gluware device's ID.
+runner_type: "python-script"
+entry_point: get_glu_device_id.py
+enabled: true
+parameters:
+  device_name:
+    required: true
+    type: string
+    default: ""

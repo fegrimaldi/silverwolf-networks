@@ -8,3 +8,17 @@ password:
   type: "string"
   secret: true
   required: true
+glu_username:
+  description: "Gluware username."
+  type: "string"
+  required: true
+glu_password:
+  description: "Gluware user password."
+  type: "string"
+  secret: true
+  required: true
+glu_base_url:
+  description: "Gluware Base url (https://glups.gluware.lab)"
+  type: "string"
+  secret: false
+  required: true  
