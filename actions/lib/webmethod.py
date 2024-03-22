@@ -45,7 +45,13 @@ class WebMethod:
                 )
             elif method == "POST":
                 response = requests.post(
-                    url, json=payload, headers=headers, auth=auth, verify=self.verify
+                    url,
+                    data=None,
+                    json=payload,
+                    params=None,
+                    headers=headers,
+                    auth=auth,
+                    verify=self.verify,
                 )
 
             elif method == "PATCH":

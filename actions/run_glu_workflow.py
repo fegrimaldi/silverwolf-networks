@@ -10,7 +10,7 @@ class RunGluWorklflow(action.BaseAction):
         response_raw = self.web_method.call(
             "POST",
             f"{self.glu_base_url}/api/workflows/{workflow_id}/run",
-            {
+            json={
                 "orgId": self.org_id,
                 "deviceIds": [parameters["device_id"]],
                 "inputParameters": {},
