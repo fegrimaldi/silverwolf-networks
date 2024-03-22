@@ -4,7 +4,7 @@ from lib.webmethod import WebMethod
 
 class GetGluDeviceId(action.BaseAction):
     def run(self, **parameters):
-        self.web_method = WebMethod()
+        self.web_method = WebMethod(verify=False)
         response_raw = self.web_method.call(
             "GET",
             f"{self.glu_base_url}/api/devices",
