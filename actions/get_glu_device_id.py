@@ -12,6 +12,7 @@ class GetGluDeviceId(action.BaseAction):
                 "orgId": "b131860f-ed86-4a87-a896-3a140e2c4ea9",
                 "name": parameters["device_name"],
             },
+            headers=None,
             auth=self.auth,
         )
         response = response_raw.json()
