@@ -62,6 +62,7 @@ class WebMethod:
                 )
             response.raise_for_status()
         except (HTTPError, RequestException) as err:
+            print(err)
             return None
 
         return response
