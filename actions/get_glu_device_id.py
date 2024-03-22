@@ -9,7 +9,7 @@ class GetGluDeviceId(action.BaseAction):
             "GET",
             f"{self.glu_base_url}/api/devices",
             {
-                "orgId": self.org_id,
+                "orgId": "b131860f-ed86-4a87-a896-3a140e2c4ea9",
                 "name": parameters["device_name"],
             },
             headers=None,
