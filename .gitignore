@@ -160,3 +160,4 @@ cython_debug/
 silverwolf.yaml
 .vscode
 dev/
+.DS_Store
